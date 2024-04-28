@@ -1,0 +1,123 @@
+/* Estilos generales */
+
+.__weatherApp {
+  background-image: linear-gradient(45deg, #6ebb74dc, #55aef7, #eeff00);
+  background-size: 500% 500%;
+  animation: Gradient 15s ease-in-out infinite;
+  align-items: center;
+  color: #fff;
+  font-family: "Alegreya Sans", sans-serif;
+  padding: 0;
+  text-align: center;
+  height: 100vh;
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.__weather {
+  overflow: hidden !important;
+  min-height: 100vh;
+}
+
+.__weatherApp .__weather .__container {
+  backdrop-filter: blur(10px);
+  /* Aplicar desenfoque al fondo */
+  background: rgb(16, 197, 198);
+  background: linear-gradient(0deg, rgba(16, 197, 198, 0.2) 0%, rgba(28, 28, 154, 0.4) 100%);
+  box-shadow: 2px 3px 15px 1px rgba(0, 0, 0, 0.384);
+  border-radius: 1rem;
+}
+
+.__weatherApp .__weather .__city {
+  letter-spacing: 0.5rem;
+  margin: 0 auto;
+}
+
+.__weatherApp .__weather .__temperature {
+  color: rgb(255, 255, 255, 0.8);
+  letter-spacing: 0.3rem;
+  font-size: 1.5rem;
+}
+
+.__weatherApp .__weather .__img-weather {
+  filter: drop-shadow(0px 0px 10px rgba(83, 83, 83, 0.644));
+}
+
+.__weatherApp .__weather .__description {
+  letter-spacing: .2rem;
+}
+
+.__weather .__container-list {
+  overflow: hidden !important;
+  z-index: 1 !important;
+}
+
+.__weather .__container-list .__option-list {
+  cursor: pointer;
+}
+
+/* .__weatherApp .__alert {
+  z-index: 100 !important;
+} */
+
+input[type="text"] {
+  border: 1px solid #ccc !important;
+  border-radius: 10px !important;
+}
+
+button:hover {
+  background-color: #0056b3 !important;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* Estilos para móviles */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 20px !important;
+  }
+
+  input[type="text"] {
+    font-size: 14px !important;
+  }
+
+  button {
+    padding: 8px 16px !important;
+  }
+
+  h2 {
+    font-size: 18px !important;
+  }
+
+  p {
+    font-size: 14px !important;
+  }
+
+  img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
