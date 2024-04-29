@@ -7,7 +7,6 @@
   align-items: center;
   color: #fff;
   font-family: "Alegreya Sans", sans-serif;
-  padding: 0;
   text-align: center;
   height: 100vh;
 }
@@ -27,7 +26,7 @@
 }
 
 
-.__weather {
+.__weatherApp .__weather {
   overflow: hidden !important;
   min-height: 100vh;
 }
@@ -60,12 +59,12 @@
   letter-spacing: .2rem;
 }
 
-.__weather .__container-list {
-  overflow: hidden !important;
-  z-index: 1 !important;
+.__weatherApp .__weather .__container-list {
+  z-index: 999;
+  overflow: hidden;
 }
 
-.__weather .__container-list .__option-list {
+.__weatherApp .__weather .__container-list .__option-list {
   cursor: pointer;
 }
 
