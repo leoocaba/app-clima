@@ -64,7 +64,7 @@ const WeatherApp = () => {
       <div className="__weather d-flex flex-column justify-content-center align-items-center w-100 px-4">
         <div className="__container container m-0 p-0">
           <div className="row d-flex justify-content-center">
-            <div className="col col-xs-10 col-sm-10 col-md-6 col-lg-8 col-xl-6 col-xxl-8 p-3 m-4">
+            <div className="col col-xs-10 col-sm-10 col-md-6 col-lg-6 col-xl-6 col-xxl-8 p-3 m-4">
               {weatherData && (
                 <div className="align-item-center justify-content-center mt-2">
                   <h1 className="__city text-center fw-bold m-auto py-1">
@@ -91,7 +91,7 @@ const WeatherApp = () => {
                 className="d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row justify-content-center my-4"
               >
                 <input
-                  className="col p-2 my-2 my-md-auto mx-2 mx-sm-2 mx-md-2 mx-lg-3 mx-xl-2"
+                  className="col col-sm-12 col-md-10 col-lg-8 col-xl-8 border-0 border-3 border-bottom border-primary p-2 my-2 my-md-auto mx-2 mx-sm-2 mx-md-2 mx-lg-3 mx-xl-2"
                   type="text"
                   name="city"
                   value={city}
@@ -130,7 +130,7 @@ const WeatherApp = () => {
 
 const App = () => {
   const options = {
-    position: "bottom center",
+    position: "bottom right",
     timeout: 3000,
     offset: "30px",
     transition: "scale",

@@ -33,7 +33,6 @@
 
 .__weatherApp .__weather .__container {
   backdrop-filter: blur(10px);
-  /* Aplicar desenfoque al fondo */
   background: rgb(16, 197, 198);
   background: linear-gradient(0deg, rgba(16, 197, 198, 0.2) 0%, rgba(28, 28, 154, 0.4) 100%);
   box-shadow: 2px 3px 15px 1px rgba(0, 0, 0, 0.384);
@@ -72,10 +71,23 @@
   z-index: 100 !important;
 } */
 
+/* Estilo del input */
 input[type="text"] {
-  border: 1px solid #ccc !important;
-  border-radius: 10px !important;
+  background-color: transparent !important;
+  caret-color: rgb(0, 0, 255);
+  color: #fff;
+  padding: 1rem;
 }
+
+input[type="text"]::placeholder {
+  color: #fff;
+  font-size: 18px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
 
 button:hover {
   background-color: #0056b3 !important;
@@ -94,7 +106,7 @@ button:hover {
 
 
 /* Estilos para móviles */
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   h1 {
     font-size: 20px !important;
   }
@@ -119,4 +131,4 @@ button:hover {
     width: 40px !important;
     height: 40px !important;
   }
-}
+} */
