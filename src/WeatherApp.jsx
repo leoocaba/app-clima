@@ -61,12 +61,12 @@ const WeatherApp = () => {
 
   return (
     <>
-      <div className="__weather d-flex flex-column justify-content-center align-items-center w-100 px-4">
+      <div className="__weather d-flex flex-column justify-content-center align-items-center w-100 px-4 py-0">
         <div className="__container container m-0 p-0">
-          <div className="row d-flex justify-content-center">
+          <div className="row d-flex justify-content-center p-0">
             <div className="col col-xs-10 col-sm-10 col-md-6 col-lg-6 col-xl-6 col-xxl-8 p-3 m-4">
               {weatherData && (
-                <div className="align-item-center justify-content-center mt-2">
+                <div className="align-item-center justify-content-center">
                   <h1 className="__city text-center fw-bold m-auto py-1">
                     {weatherData.name}
                   </h1>

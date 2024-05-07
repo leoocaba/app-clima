@@ -5,7 +5,7 @@
   font-family: "Anton", sans-serif;
   font-weight: 400;
   font-style: normal;
-  
+
 }
 
 .__weatherApp {
@@ -33,6 +33,10 @@
   }
 }
 
+html,
+.__weatherApp {
+  height: 100vh;
+}
 
 .__weatherApp .__weather {
   overflow: hidden !important;
@@ -74,10 +78,6 @@
 .__weatherApp .__weather .__container-list .__option-list {
   cursor: pointer;
 }
-
-/* .__weatherApp .__alert {
-  z-index: 100 !important;
-} */
 
 /* Estilo del input */
 input[type="text"] {
