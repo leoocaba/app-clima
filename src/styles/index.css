@@ -1,4 +1,12 @@
 /* Estilos generales */
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+.__weatherApp header h1 {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  
+}
 
 .__weatherApp {
   background-image: linear-gradient(45deg, #6ebb74dc, #55aef7, #eeff00);
