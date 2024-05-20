@@ -136,11 +136,11 @@ const WeatherApp = () => {
               {filteredSearchResults.length > 0 && city.trim() && (
                 <div className="position-relative w-100 d-flex justify-content-center mx-auto">
                   <div className="container w-100 d-flex justify-content-center mx-auto">
-                    <ul className="list-group col-12 col-md-8 px-0 position-absolute top-100 start-50 translate-middle-x overflow-y-auto">
+                    <ul className="__list list-group col-12 col-md-10 p-0 m-0 position-absolute top-100 start-50 translate-middle-x overflow-y-auto">
                       {filteredSearchResults.map((result) => (
                         <li
                           key={result.geonameId}
-                          className="list-group-item __option-list my-1"
+                          className="list-group-item __option-list fs-6 border-none py-2 my-2"
                           onClick={() => handleCitySelection(result.name)}
                         >
                           {result.name}
