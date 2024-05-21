@@ -31,7 +31,7 @@ html,
 }
 
 .__weatherApp header h1,
-.__weatherApp footer span {
+.__weatherApp footer p a {
   font-family: "Anton", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -124,7 +124,7 @@ input[type="text"] {
 }
 
 input[type="text"]::placeholder {
-  color: #fff;
+  color: #d2d2d2;
   font-size: 18px;
 }
 
