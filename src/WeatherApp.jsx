@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Provider as AlertProvider, useAlert } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import useWeatherAPI from "./customHooks/useWeatherAPI";
-import {
-  kelvinToCelsius,
-  getWeatherDescription,
-} from "./Helpers/weatherHelper";
+import { kelvinToCelsius } from "./Helpers/weatherHelper";
 import weatherTranslations from "./Helpers/weatherTranslations";
 import useCitySearch from "./customHooks/useCitySearch";
 
@@ -66,7 +63,7 @@ const WeatherApp = () => {
 
   useEffect(() => {
     if (weatherData && weatherData.weather) {
-      const description = getWeatherDescription(weatherData);
+      const description = weatherData.weather[0].description;
       translateDescription(description);
     }
   }, [weatherData]);
@@ -93,7 +90,7 @@ const WeatherApp = () => {
                     {weatherData.name}
                   </h1>
                   <h2 className="__temperature text-center m-auto py-1">
-                    Temperatura: {kelvinToCelsius(weatherData?.main?.temp)}°C{" "}
+                    Temperatura: {kelvinToCelsius(weatherData.main.temp)}°C{" "}
                   </h2>
                   <img
                     className="__img-weather d-flex m-auto py-0"
