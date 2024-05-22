@@ -1,5 +1,3 @@
-// customHooks/useWeatherAPI.jsx
-
 import { useState } from "react";
 
 const useWeatherAPI = () => {
@@ -10,7 +8,12 @@ const useWeatherAPI = () => {
     const URL_BASE = "https://api.openweathermap.org/data/2.5/weather";
     const API_KEY = "1cde00afd70bcf3efc2d222053a146b7";
     try {
-      const response = await fetch(`${URL_BASE}?q=${city}&appid=${API_KEY}`);
+      const response = await fetch(
+        `${URL_BASE}?q=${city}&appid=${API_KEY}&units=metric&lang=es`
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
       const data = await response.json();
       setWeatherData(data);
     } catch (error) {
@@ -25,8 +28,11 @@ const useWeatherAPI = () => {
     const API_KEY = "1cde00afd70bcf3efc2d222053a146b7";
     try {
       const response = await fetch(
-        `${URL_BASE}?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+        `${URL_BASE}?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric&lang=es`
       );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
       const data = await response.json();
       setWeatherData(data);
     } catch (error) {

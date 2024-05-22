@@ -158,19 +158,10 @@ const WeatherApp = () => {
   );
 };
 
-const App = () => {
-  const options = {
-    position: "bottom right",
-    timeout: 3000,
-    offset: "30px",
-    transition: "scale",
-  };
+const WeatherAppWithAlerts = () => (
+  <AlertProvider template={AlertTemplate}>
+    <WeatherApp />
+  </AlertProvider>
+);
 
-  return (
-    <AlertProvider template={AlertTemplate} {...options}>
-      <WeatherApp />
-    </AlertProvider>
-  );
-};
-
-export default App;
+export default WeatherAppWithAlerts;
