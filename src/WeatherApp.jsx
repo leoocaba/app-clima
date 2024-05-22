@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Provider as AlertProvider, useAlert } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import useWeatherAPI from "./customHooks/useWeatherAPI";
-import { kelvinToCelsius } from "./Helpers/weatherHelper";
+import {
+  kelvinToCelsius,
+  getWeatherDescription,
+} from "./Helpers/weatherHelper";
 import weatherTranslations from "./Helpers/weatherTranslations";
 import useCitySearch from "./customHooks/useCitySearch";
 
@@ -63,7 +66,7 @@ const WeatherApp = () => {
 
   useEffect(() => {
     if (weatherData && weatherData.weather) {
-      const description = weatherData.weather[0].description;
+      const description = getWeatherDescription(weatherData);
       translateDescription(description);
     }
   }, [weatherData]);
@@ -158,10 +161,19 @@ const WeatherApp = () => {
   );
 };
 
-const WeatherAppWithAlerts = () => (
-  <AlertProvider template={AlertTemplate}>
-    <WeatherApp />
-  </AlertProvider>
-);
+const App = () => {
+  const options = {
+    position: "bottom right",
+    timeout: 3000,
+    offset: "30px",
+    transition: "scale",
+  };
 
-export default WeatherAppWithAlerts;
+  return (
+    <AlertProvider template={AlertTemplate} {...options}>
+      <WeatherApp />
+    </AlertProvider>
+  );
+};
+
+export default App;
