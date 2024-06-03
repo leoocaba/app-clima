@@ -90,7 +90,7 @@ const WeatherApp = () => {
                     {weatherData.name}
                   </h1>
                   <h2 className="__temperature text-center m-auto py-1">
-                    Temperatura: {kelvinToCelsius(weatherData.main.temp)}°C{" "}
+                    Temperatura: {kelvinToCelsius(weatherData?.main?.temp)}°C
                   </h2>
                   <img
                     className="__img-weather d-flex m-auto py-0"

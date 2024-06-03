@@ -6,8 +6,13 @@ const useCitySearch = () => {
   const searchCities = async (query) => {
     try {
       const response = await fetch(
-        `https://api.geonames.org/searchJSON?q=${query}&maxRows=5&username=leoocaba`
+        `https://secure.geonames.org/searchJSON?q=${query}&maxRows=5&username=leoocaba`
       );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
       setSearchResults(data.geonames);
     } catch (error) {
