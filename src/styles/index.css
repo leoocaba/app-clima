@@ -1,11 +1,44 @@
 /* Estilos generales */
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
-.__weatherApp header h1 {
+/* Configuración de la barra de desplazamiento */
+/* Personaliza el scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  /* Ajusta el ancho del scrollbar */
+}
+
+/* Cambia el color de fondo del track (la parte donde se mueve el scrollbar) */
+::-webkit-scrollbar-track {
+  background: transparent;
+  /* Fondo blanco */
+}
+
+/* Cambia el color de la barra del scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #212529;
+  /* Color negro */
+  border-radius: 5px;
+  /* Agrega bordes redondeados */
+  border: 3px solid white;
+  /* Padding de lado */
+}
+
+
+html,
+.__weatherApp {
+  height: 100vh;
+}
+
+.__weatherApp header h1,
+.__weatherApp footer p a {
   font-family: "Anton", sans-serif;
   font-weight: 400;
   font-style: normal;
-
+  background-image: linear-gradient(45deg, #6ebb74dc, #55aef7, #ff6363);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 3px 10px rgba(255, 255, 255, 0.2);
 }
 
 .__weatherApp {
@@ -16,7 +49,7 @@
   color: #fff;
   font-family: "Alegreya Sans", sans-serif;
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 @keyframes Gradient {
@@ -33,14 +66,9 @@
   }
 }
 
-html,
-.__weatherApp {
-  height: 100vh;
-}
-
 .__weatherApp .__weather {
-  overflow: hidden !important;
   min-height: 100vh;
+  z-index: 9996;
 }
 
 .__weatherApp .__weather .__container {
@@ -70,13 +98,21 @@ html,
   letter-spacing: .2rem;
 }
 
-.__weatherApp .__weather .__container-list {
-  z-index: 999;
-  overflow: hidden;
+.__weather .__list {
+  background-color: rgb(12, 101, 231, 0.8);
+  height: 100px;
 }
 
-.__weatherApp .__weather .__container-list .__option-list {
+.__weather .__list .__option-list {
+  background-color: transparent;
+  border: none;
+  color: #212529;
   cursor: pointer;
+  height: 1.1rem;
+}
+
+.__weather .__list .__option-list:hover {
+  color: #ffffff;
 }
 
 /* Estilo del input */
@@ -88,19 +124,19 @@ input[type="text"] {
 }
 
 input[type="text"]::placeholder {
-  color: #fff;
+  color: #d2d2d2;
   font-size: 18px;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="text"]:not(:placeholder-shown) {
+  background-color: rgba(255, 255, 255, 0.2);
   outline: none;
 }
-
 
 button:hover {
   background-color: #0056b3 !important;
 }
-
 
 @keyframes fadeIn {
   from {
@@ -111,32 +147,3 @@ button:hover {
     opacity: 1;
   }
 }
-
-
-/* Estilos para móviles */
-/* @media (max-width: 600px) {
-  h1 {
-    font-size: 20px !important;
-  }
-
-  input[type="text"] {
-    font-size: 14px !important;
-  }
-
-  button {
-    padding: 8px 16px !important;
-  }
-
-  h2 {
-    font-size: 18px !important;
-  }
-
-  p {
-    font-size: 14px !important;
-  }
-
-  img {
-    width: 40px !important;
-    height: 40px !important;
-  }
-} */

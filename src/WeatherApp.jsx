@@ -23,19 +23,38 @@ const WeatherApp = () => {
     }
   };
 
-  const handleCitySelection = (selectedCity) => {
+  const handleCitySelection = async (selectedCity) => {
     setCity(selectedCity);
     setSearchResults([]);
-    fetchData(selectedCity);
+    try {
+      await fetchData(selectedCity);
+    } catch (error) {
+      alert.error(
+        "Error al obtener los datos del clima. Intente con otra ciudad."
+      );
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!city.trim()) {
-      alert.error("¡Por favor, ingrese el nombre de una ciudad!");
+      alert.error("¡Por favor, ingrese una ciudad!");
       return;
     }
-    fetchData(city);
+    const cityExists = searchResults.some(
+      (result) => result.name.toLowerCase() === city.toLowerCase()
+    );
+    if (!cityExists) {
+      alert.error("La ciudad no existe en la base de datos.");
+      return;
+    }
+    try {
+      await fetchData(city);
+    } catch (error) {
+      alert.error(
+        "Error al obtener los datos del clima. Intente con otra ciudad."
+      );
+    }
   };
 
   useEffect(() => {
@@ -65,13 +84,13 @@ const WeatherApp = () => {
         <div className="__container container m-0 p-0">
           <div className="row d-flex justify-content-center p-0">
             <div className="col col-xs-10 col-sm-10 col-md-6 col-lg-6 col-xl-6 col-xxl-8 p-3 m-4">
-              {weatherData && (
+              {weatherData && weatherData.weather ? (
                 <div className="align-item-center justify-content-center">
                   <h1 className="__city text-center fw-bold m-auto py-1">
                     {weatherData.name}
                   </h1>
                   <h2 className="__temperature text-center m-auto py-1">
-                    Temperatura: {kelvinToCelsius(weatherData?.main?.temp)}°C{" "}
+                    Temperatura: {kelvinToCelsius(weatherData?.main?.temp)}°C
                   </h2>
                   <img
                     className="__img-weather d-flex m-auto py-0"
@@ -80,8 +99,17 @@ const WeatherApp = () => {
                   />
                   <p className="__description text-center m-auto py-1">
                     Condición actual:{" "}
-                    <span className="badge fw-bol text-bg-light">
+                    <span className="badge fw-bold text-bg-light">
                       {weatherDescription}
+                    </span>
+                  </p>
+                </div>
+              ) : (
+                <div className="container my-2">
+                  <p className="text-center my-0">
+                    No se encontraron datos de clima.{" "}
+                    <span className="badge fs-6 text-bg-danger m-0 p-1">
+                      Ingrese una ciudad.
                     </span>
                   </p>
                 </div>
@@ -106,18 +134,20 @@ const WeatherApp = () => {
                 </button>
               </form>
               {filteredSearchResults.length > 0 && city.trim() && (
-                <div className="__container-list container col-5 d-flex justify-content-center mx-o px-0">
-                  <ul className="__list col d-flex list-group px-0">
-                    {filteredSearchResults.map((result) => (
-                      <li
-                        key={result.geonameId}
-                        className="__option-list list-group-item my-1"
-                        onClick={() => handleCitySelection(result.name)}
-                      >
-                        {result.name}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="position-relative w-100 d-flex justify-content-center mx-auto">
+                  <div className="container w-100 d-flex justify-content-center mx-auto">
+                    <ul className="__list list-group col-12 col-md-10 p-0 m-0 position-absolute top-100 start-50 translate-middle-x overflow-y-auto">
+                      {filteredSearchResults.map((result) => (
+                        <li
+                          key={result.geonameId}
+                          className="list-group-item __option-list fs-6 border-none py-2 my-2"
+                          onClick={() => handleCitySelection(result.name)}
+                        >
+                          {result.name}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               )}
             </div>
